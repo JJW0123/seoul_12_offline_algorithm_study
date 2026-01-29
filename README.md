@@ -1,4 +1,4 @@
-# 📘 Algorithm Study Repository
+# 📘 SSAFY 오프라인 알고리즘 스터디
 
 알고리즘 풀이를 체계적으로 기록하고 관리하기 위한 스터디 저장소입니다.
 <br>
