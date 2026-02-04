@@ -18,3 +18,7 @@
 ## ❗ 코드 제목 양식
     {플랫폼}_{난이도}문제번호_문제제목.언어 - {기타 내용}
 - 💡 예시: `BOJ_[실4]1219_문제제목.py`
+<br>
+
+## 📋 구글시트
+    https://docs.google.com/spreadsheets/d/1T6sWTh7SX0OGdOagG_qZsLP2p_xyumCMiooFchQJK3A
