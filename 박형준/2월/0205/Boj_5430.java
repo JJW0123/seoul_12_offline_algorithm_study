@@ -13,7 +13,6 @@ public class Boj_5430 {
         int T = sc.nextInt();
 
         for (int tc = 1; tc <= T; tc++) {
-            Deque<Integer> deque = new ArrayDeque<>();
             char[] commands = sc.next().toCharArray();
             int n = sc.nextInt();
 
