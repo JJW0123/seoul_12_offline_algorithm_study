@@ -18,13 +18,12 @@ public class Boj_5430 {
 
             int rotate = 0;
             String replace = sc.next().replace("[", "").replace("]", "");
-            System.out.println(replace);
             List<Integer> list;
             if (replace.isEmpty()) {
                 list = new ArrayList<>();
             } else {
                 list = Arrays.stream(replace.split(","))
-                        .map(Integer::parseInt)
+                        .map(Integer::valueOf)
                         .collect(Collectors.toList());
             }
 
