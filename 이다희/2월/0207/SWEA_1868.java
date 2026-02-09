@@ -40,7 +40,7 @@ class Solution {
 				for (int j = 0; j < N; j++) {
 					if (arr[i][j] == 0) {
 						dfs(i, j);
-						answer++;;
+						answer++;
 					}
 				}
 			}
