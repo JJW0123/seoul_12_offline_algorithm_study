@@ -34,7 +34,6 @@ public class BOJ_16236 {
             }
         }
 
-        // 크기 저장하는 int 하나 선언하기
         // 길찾기 알고리즘 만들기(크기 이하인 길은 지나가기 가능, 크기 작아야만 먹을 수 있음)
         // 최단거리 찾아야 하니까 bfs?
         // 거리 확정되면 바로 현재 위치랑 크기, 걸린시간 리턴하고 다시 길찾기 실행
@@ -44,7 +43,7 @@ public class BOJ_16236 {
         int time = 0; // 걸린 시간
         while (true) {
 
-            // 거리, x좌표, y좌표
+            // int[] -> 거리, x좌표, y좌표
             PriorityQueue<int[]> pq = new PriorityQueue<>((o1, o2) -> {
                 if (o1[0] != o2[0])
                     return Integer.compare(o1[0], o2[0]); // 1. 거리 순
@@ -56,7 +55,7 @@ public class BOJ_16236 {
 
             pq.offer(new int[] { 0, shark.x, shark.y });
             visited[shark.x][shark.y] = true;
-            boolean ate = false;
+            boolean flag = false;
 
             while (!pq.isEmpty()) {
                 int[] cur = pq.poll();
@@ -78,10 +77,11 @@ public class BOJ_16236 {
                     }
                     // 걸린 시간 갱신
                     time += curDist;
-                    ate = true;
+                    flag = true;
                     break; // 이번 턴 종료, 새로 BFS 시작
                 }
 
+                // bfs로 루트 탐색
                 for (int i = 0; i < 4; i++) {
                     int nx = curX + dx[i];
                     int ny = curY + dy[i];
@@ -95,7 +95,7 @@ public class BOJ_16236 {
                 }
             }
 
-            if (!ate)
+            if (!flag)
                 break; // 더 이상 먹을 물고기가 없으면 종료
         }
 
