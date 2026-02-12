@@ -25,7 +25,7 @@ public class SWEA_2105 {
 
             int[] result = {-1};
             for (int i = 1; i < n; i++) {
-                for (int j = 1; j < i; j++) {
+                for (int j = 1; j < n; j++) {
                     countCafe(i, j, n, 1, 0, result, new HashSet<>(), i, j);
                 }
             }
@@ -43,6 +43,7 @@ public class SWEA_2105 {
 
         if (idx == 3 && x + dx == startX && y +dy == startY) {
             result[0] = Math.max(result[0], count);
+            return;
         }
 
         if (x + dx >= 0 && x + dx < n && y + dy >= 0 && y + dy < n && !distinct.contains(map[x + dx][y + dy])) {
