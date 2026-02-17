@@ -1,4 +1,4 @@
-val directions = arrayOf(intArrayOf(-1, 0), intArrayOf(0, -1), intArrayOf(1, 0), intArrayOf(0, 1))
+lateinit var directions : Array<IntArray>
 var result = 0
 
 fun main() {
@@ -17,6 +17,7 @@ fun main() {
             value
         }.toIntArray()
     }
+    directions = arrayOf(intArrayOf(-1, 0), intArrayOf(0, -1), intArrayOf(1, 0), intArrayOf(0, 1))
 
     var size = 2
     var count = 0

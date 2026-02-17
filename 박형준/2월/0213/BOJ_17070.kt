@@ -1,14 +1,16 @@
-val direction = arrayOf(
-    arrayOf(intArrayOf(0, 1), intArrayOf(1, 1)),
-    arrayOf(intArrayOf(1, 0), intArrayOf(1, 1)),
-    arrayOf(intArrayOf(0, 1), intArrayOf(1, 0), intArrayOf(1, 1))
-)
+lateinit var direction : Array<Array<IntArray>>
 
 fun main() {
     val n = readln().toInt()
     val map = Array(n) {
         readln().split(" ").map { it.toInt() }.toIntArray()
     }
+
+    direction = arrayOf(
+        arrayOf(intArrayOf(0, 1), intArrayOf(1, 1)),
+        arrayOf(intArrayOf(1, 0), intArrayOf(1, 1)),
+        arrayOf(intArrayOf(0, 1), intArrayOf(1, 0), intArrayOf(1, 1))
+    )
 
     val stack = ArrayDeque<IntArray>()
     stack.add(intArrayOf(0, 1, 0))
