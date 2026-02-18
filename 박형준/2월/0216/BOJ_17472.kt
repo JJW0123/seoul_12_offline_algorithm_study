@@ -1,19 +1,17 @@
+import java.util.PriorityQueue
 import kotlin.math.abs
 
 lateinit var visitedIsland : Array<BooleanArray>
 lateinit var islands : MutableList<Island>
 lateinit var map : Array<IntArray>
-lateinit var result17472 : IntArray
-lateinit var visitedTracking: BooleanArray
 
 fun main() {
     val (n,m) = readln().split(" ").map { it.toInt() }
-    result17472 = intArrayOf(Int.MAX_VALUE)
     map = Array(n) {
         readln().split(" ").map { it.toInt() }.toIntArray()
     }
 
-    directions = arrayOf(
+    val directions = arrayOf(
             intArrayOf(0, 1), intArrayOf(0, -1),
             intArrayOf(1, 0), intArrayOf(-1, 0)
     )
@@ -24,17 +22,27 @@ fun main() {
 
     searchAllMap(n,m) { x, y ->
         if (map[x][y] == 1 && !visitedIsland[x][y]) {
-            explore(x, y, n, m)
+            explore(x, y, n, m , directions)
         }
     }
 
-    visitedTracking = BooleanArray(islands.size)
-    for (i in 0 until islands.size) {
-        visitedTracking[i] = true
-        backtracking(1,islands.size,islands[i], 0)
+    val size = islands.size
+    val islandsGraph = Array(size) { IntArray(size) }
+
+    for (i in 0 until size - 1) {
+        for (j in i + 1 until size) {
+            val distance = islands[i].countDistance(islands[j])
+            if (distance <= 1) {
+                continue
+            }
+            islandsGraph[i][j] = distance
+            islandsGraph[j][i] = distance
+        }
     }
 
-    println(if (result17472[0] == Int.MAX_VALUE) -1 else result17472[0])
+    val result = getResultByMinimumDistance(islandsGraph, 0)
+
+    println(result)
 }
 
 fun searchAllMap(
@@ -49,7 +57,7 @@ fun searchAllMap(
     }
 }
 
-fun explore(x: Int, y: Int, height: Int, width: Int) {
+fun explore(x: Int, y: Int, height: Int, width: Int, directions: Array<IntArray>) {
     val deque = ArrayDeque<Pair<Int, Int>>()
 
     visitedIsland[x][y] = true
@@ -100,7 +108,6 @@ class Island(
 
         return if (minDist == Int.MAX_VALUE) -1 else minDist
     }
-
     private fun isPathClear(standard: Pair<Int, Int>, another: Pair<Int, Int>, vertical: Boolean) : Boolean {
         if (vertical) {
             if (standard.first > another.first) {
@@ -119,39 +126,50 @@ class Island(
             return true
         } else {
             if (standard.second < another.second) {
-                for (j in standard.second + 1..< another.second) {
-                    if (map[standard.first][j] == 1) {
+                for (i in standard.second + 1..< another.second) {
+                    if (map[standard.first][i] == 1) {
                         return false
                     }
                 }
                 return true
             }
 
-            for (i in standard.first + 1 ..< another.first) {
-                if (map[i][standard.second] == 1) {
+            for (i in another.second + 1 ..< standard.second) {
+                if (map[standard.first][i] == 1) {
                     return false
                 }
             }
             return true
         }
     }
+
 }
 
-fun backtracking(depth: Int, size: Int, before: Island, distance: Int) {
-    if (depth == size) {
-        result17472[0] = result17472[0].coerceAtMost(distance)
-        return
-    }
+fun getResultByMinimumDistance(islandsGraph: Array<IntArray>, root: Int): Int {
+    val visitedGraph = BooleanArray(islandsGraph.size)
+    val queue = PriorityQueue<Pair<Int, Int>>(compareBy { it.second }) // 노드, 거리
 
-    for (i in 0 until size) {
-        if (!visitedTracking[i]) {
-            val countDistance = before.countDistance(islands[i])
-            if (countDistance == -1) {
-                continue
+    queue.add(Pair(root, 0))
+
+    var totalDistance = 0
+    var connectedCount = 0
+
+    while (queue.isNotEmpty()) {
+        val (current, dist) = queue.poll()
+
+        if (visitedGraph[current]) continue
+
+        visitedGraph[current] = true
+        totalDistance += dist
+        connectedCount++
+
+        for (next in islandsGraph.indices) {
+            val nextDist = islandsGraph[current][next]
+            if (!visitedGraph[next] && nextDist > 0) {
+                queue.add(Pair(next, nextDist))
             }
-            visitedTracking[i] = true
-            backtracking(depth + 1, size, islands[i], distance + countDistance)
-            visitedTracking[i] = false
         }
     }
+
+    return if (connectedCount == islandsGraph.size) totalDistance else -1
 }
