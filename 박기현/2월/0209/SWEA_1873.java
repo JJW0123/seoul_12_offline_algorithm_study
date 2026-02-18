@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Solution {
+public class SWEA_1873 {
     static int H, W, r, c;
     static char[][] map;
     // 상, 하, 좌, 우 순서 (dr, dc)
