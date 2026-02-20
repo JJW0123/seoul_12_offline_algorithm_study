@@ -1,0 +1,72 @@
+### IDE ###
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+.springBeans
+.sts4-cache/
+
+# VS Code
+.vscode/
+
+### Build ###
+# Maven
+target/
+
+# Gradle
+.gradle/
+build/
+
+### Logs ###
+*.log
+logs/
+
+### OS ###
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+### Spring Boot ###
+# Application properties (민감 정보 분리용)
+application-local.yml
+application-local.properties
+application-dev.yml
+application-dev.properties
+
+# Generated files
+*.war
+*.jar
+*.ear
+
+### Database ###
+# H2 database files
+*.h2.db
+*.mv.db
+
+### Test ###
+/test-output/
+/coverage/
+
+### Node (프론트 같이 쓰는 경우) ###
+node_modules/
+dist/
+package-lock.json
+yarn.lock
+
+### Environment ###
+.env
+.env.*
+
+### 기타 ###
+*.swp
+*.swo
