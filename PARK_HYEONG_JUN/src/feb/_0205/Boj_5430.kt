@@ -1,5 +1,7 @@
 package feb._0205;
 
+import kotlin.text.iterator
+
 fun main() {
     val T = readln().toInt()
     repeat(T) {
