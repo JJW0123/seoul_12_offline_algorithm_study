@@ -1,3 +1,5 @@
+package feb._0204
+
 import kotlin.math.pow
 
 fun main() {

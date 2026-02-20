@@ -1,3 +1,5 @@
+package feb._0204
+
 fun main() {
     val n = readln().toInt()
     val queue = ArrayDeque<Int>()

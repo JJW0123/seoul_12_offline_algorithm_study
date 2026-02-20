@@ -1,3 +1,5 @@
+package feb._0204;
+
 import java.util.*;
 
 public class BOJ_2164 {
