@@ -9,9 +9,11 @@ fun main() {
         compareByDescending<Pair<Int, Int>> { it.second }
             .thenByDescending { it.first }
     )
+    val map = HashMap<Int, Int>()
 
     repeat(n) {
         val (p, l) = readln().split(" ").map { it.toInt() }
+        map[p] = l
         tree.add(Pair(p, l))
     }
 
@@ -25,8 +27,16 @@ fun main() {
             } else {
                 sb.append(tree.last().first).append("\n")
             }
-            "add" -> tree.add(Pair(commandline[1].toInt(), commandline[2].toInt()))
-            "solved" -> tree.removeIf { it.first == commandline[1].toInt() }
+            "add" -> {
+                val p = commandline[1].toInt()
+                val l = commandline[2].toInt()
+                tree.add(Pair(p, l))
+                map[p] = l
+            }
+            "solved" -> {
+                val p = commandline[1].toInt()
+                tree.remove(Pair(p, map.remove(p)))
+            }
         }
     }
     print(sb)
