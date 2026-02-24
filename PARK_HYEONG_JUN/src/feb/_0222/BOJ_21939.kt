@@ -21,9 +21,9 @@ fun main() {
         val commandline = readln().split(" ")
         when (commandline[0]) {
             "recommend" -> if (commandline[1] == "1") {
-                sb.append(tree.first.first).append("\n")
+                sb.append(tree.first().first).append("\n")
             } else {
-                sb.append(tree.last.first).append("\n")
+                sb.append(tree.last().first).append("\n")
             }
             "add" -> tree.add(Pair(commandline[1].toInt(), commandline[2].toInt()))
             "solved" -> tree.removeIf { it.first == commandline[1].toInt() }
