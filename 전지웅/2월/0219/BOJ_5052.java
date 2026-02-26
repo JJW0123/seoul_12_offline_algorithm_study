@@ -3,36 +3,46 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.PriorityQueue;
 
-public class Main{
+class Main {
 
 	public static void main(String[] args) throws IOException {
-		// 한 전화번호가 다른 전화번호에 포함되어 있다면 NO, 아니라면 YES
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
-		
+
 		int T = Integer.parseInt(br.readLine());
-		for(int t=0; t<T; t++) {
+
+		for (int t = 0; t < T; t++) {
+
 			int N = Integer.parseInt(br.readLine());
+
+			// 우선순위큐로 문자열 정렬
 			PriorityQueue<String> pq = new PriorityQueue<>((o1, o2) -> o1.compareTo(o2));
-			for(int i=0; i<N; i++) {
+
+			// input
+			for (int i = 0; i < N; i++) {
 				pq.add(br.readLine());
 			}
+
+			// 일관성 판단할 boolean 변수
 			boolean flag = false;
-			
-			while(pq.size() > 1) {
+
+			while (pq.size() > 1) {
 				String str = pq.poll();
-				for(String s : pq) {
-					if(s.startsWith(str)) {
+				for (String s : pq) {
+					// 만약 일관성에 위배된다면 반복문 탈출
+					if (s.startsWith(str)) {
 						flag = true;
-					}else {
+					} else {
 						break;
 					}
 				}
-				if(flag) break;
+				if (flag)
+					break;
 			}
-			if(flag) {
+
+			if (flag) {
 				sb.append("NO\n");
-			}else {
+			} else {
 				sb.append("YES\n");
 			}
 		}
