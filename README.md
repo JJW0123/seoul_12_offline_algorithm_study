@@ -11,17 +11,17 @@
 <br>
 
 ## 📁 Repository 폴더 구조
-    {이름}/{월}/{날짜}/{코드}
-- 💡 예시: `김유준 / feb / 0212 / 코드`
+    {이름}/{월}/{코드}
+- 💡 예시: `김유준 / 2월 / 코드`
 <br>
 
 ## ❗ 코드 제목 양식
     {플랫폼}_{문제번호}.언어
-- 💡 예시: `BOJ_1219.py`
+- 💡 예시: `SWEA_1219.java`
 <br>
 
 ## 📋 구글시트
     https://docs.google.com/spreadsheets/d/1T6sWTh7SX0OGdOagG_qZsLP2p_xyumCMiooFchQJK3A
 
 ## 🐕 문제집
-    https://github.com/encrypted-def/basic-algo-lecture/blob/master/workbook.md
+    https://swexpertacademy.com/main/talk/solvingClub/clubView.do?solveclubId=AZt8IiBqxEDHBIN6
