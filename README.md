@@ -21,7 +21,7 @@
 <br>
 
 ## 📋 구글시트
-    https://docs.google.com/spreadsheets/d/1T6sWTh7SX0OGdOagG_qZsLP2p_xyumCMiooFchQJK3A
+    https://docs.google.com/spreadsheets/d/1T6sWTh7SX0OGdOagG_qZsLP2p_xyumCMiooFchQJK3A/edit?gid=174636513
 
 ## 🐕 문제집
     https://swexpertacademy.com/main/talk/solvingClub/clubView.do?solveclubId=AZt8IiBqxEDHBIN6
