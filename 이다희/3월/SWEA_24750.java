@@ -70,7 +70,7 @@ class UserSolution {
 				mNum1 /= 10;
 				mNum2 /= 10;
 			}
-		// 오른쪽	삽입
+		// 오른쪽 삽입
 		} else {
 			for (int i = 0; i < len; i++) {
 				d1 = (mNum1 / div) % 10;
